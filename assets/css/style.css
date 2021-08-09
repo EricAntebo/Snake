@@ -1,1 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&family=Lato&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: rgb(226, 226, 226);
+    background: rgb(84, 179, 46);
+}
+
+/* Landing page */
+
+header,
+#start-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25vh;
+}
+
+header h1{
+    font-family: "Kanit", "Lato", sans-serif;
+    font-size: 6rem;
+    letter-spacing: 3px;
+    text-shadow: 8px 8px 20px #333;
+}
+
+#start-container button{
+    color: rgb(226, 226, 226);
+    background-color: rgb(46, 97, 26);
+    font-family: "Kanit", Arial;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-style: none;
+    border-radius: 6px;
+    width: 14vw;
+    min-width: 175px;
+    height: 7vh;
+    min-height: 50px;
+    transition: all 0.6s;
+}
+
+#start-container button:hover{
+    background-color: rgba(84, 179, 46, 0);
+    font-size: 2rem;
+    text-shadow: 5px 5px 10px #333;
+    letter-spacing: 2px;
+}
+
+/* Responsive Design */
+
+@media screen and (max-width: 400px){
+    header h1{
+        font-size: 5rem;
+    }
+} 
