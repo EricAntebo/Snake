@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/0c1ba5b549.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake</title>
 </head>
 <body>
     <div id="particles-js"></div>
     <div id="container">
+        <i id="volume" class="fas fa-volume-up"></i>
         <header>
             <h1>SNAKE</h1>
         </header>
@@ -16,6 +18,10 @@
             <button>START</button>
         </div>
     </div>
+    <audio loop autoplay id="audio">
+        <source src="assets/music/background-music.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+      </audio> 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>

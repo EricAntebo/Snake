@@ -14,10 +14,7 @@ body{
 /* particles.js code */
 
 #particles-js {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(to bottom, rgb(47, 102, 26), rgb(84, 179, 46));
+    background: linear-gradient(to bottom, rgb(38, 82, 21), rgb(84, 179, 46));
 }
 canvas {
     display: block;
@@ -25,6 +22,11 @@ canvas {
 }
 
 /* Landing page */
+
+#volume{
+    margin: 10px;
+    font-size: 125%;
+}
 
 #particles-js,
 #container{
@@ -38,7 +40,7 @@ header,
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25vh;
+    margin-top: 20vh;
 }
 
 header h1{
