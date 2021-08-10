@@ -11,7 +11,27 @@ body{
     background: rgb(84, 179, 46);
 }
 
+/* particles.js code */
+
+#particles-js {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgb(47, 102, 26), rgb(84, 179, 46));
+}
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
 /* Landing page */
+
+#particles-js,
+#container{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
 
 header,
 #start-container{
