@@ -71,8 +71,6 @@ particlesJS("particles-js", {
     retina_detect: true
 });
 
-
-
 var volume = document.getElementById('volume');
 var audio = document.getElementById('audio');
 
