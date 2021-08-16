@@ -91,7 +91,7 @@ if(volume == null){
             volume.classList.remove("fa-volume-up");
             volume.classList.add("fa-volume-mute");
         }
-    })
+    });
 }
 
 /* Game Logics */
@@ -180,7 +180,7 @@ if(playArea == null){
     function drawScore(){
         context.fillStyle = "white";
         context.font = "15px Verdana";
-        context.fillText("Score: " + score, playArea.width - 80, 15)
+        context.fillText("Score: " + score, playArea.width - 80, 15);
     }
     
     function drawCanvas(){
@@ -192,7 +192,7 @@ if(playArea == null){
         context.fillStyle = "green";
         for(let i=0; i < snakeParts.length; i++){
             let part = snakeParts[i];
-            context.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
+            context.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize);
         }
     
         snakeParts.push(new SnakePart(headX, headY));
@@ -216,8 +216,8 @@ if(playArea == null){
     
     function eatApple(){
         if(appleX === headX && appleY === headY){
-            appleX = Math.floor(Math.random() * tileCount)
-            appleY = Math.floor(Math.random() * tileCount)
+            appleX = Math.floor(Math.random() * tileCount);
+            appleY = Math.floor(Math.random() * tileCount);
             tailLength++;
             score++;
 
