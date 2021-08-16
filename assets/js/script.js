@@ -83,9 +83,13 @@ if(volume == null){
 }else{
     volume.addEventListener("click", () => {
         if (audio.volume === 0){
-            audio.volume = 1;
+            audio.volume = 0.75;
+            volume.classList.remove("fa-volume-mute");
+            volume.classList.add("fa-volume-up");
         } else{
             audio.volume = 0;
+            volume.classList.remove("fa-volume-up");
+            volume.classList.add("fa-volume-mute");
         }
     })
 }
@@ -216,7 +220,10 @@ if(playArea == null){
             appleY = Math.floor(Math.random() * tileCount)
             tailLength++;
             score++;
-            new Audio("assets/audio/eating-sound.mp3").play();
+
+            var eatSound = new Audio("assets/audio/eating-sound.mp3");
+            eatSound.volume = 0.75;
+            eatSound.play();
         }
     }
     

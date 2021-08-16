@@ -81,6 +81,12 @@ header h1{
     text-shadow: 8px 8px 20px #333;
     color: rgb(226, 226, 226);
     text-decoration: none; 
+    transition: all 0.6s;
+}
+
+#home:hover{
+    font-size: 4.5rem;
+    letter-spacing: 6px;
 }
 
 #play-header{
@@ -94,7 +100,7 @@ header h1{
 }
 
 #game-box{
-    box-shadow: black 20px 10px 50px;
+    box-shadow: black 0 5px 2em 10px;
 }
 
 /* Responsive Design */
