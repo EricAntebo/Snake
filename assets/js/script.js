@@ -1,3 +1,5 @@
+/* Particles.js */
+
 particlesJS("particles-js", {
     particles: {
         number: {
@@ -71,17 +73,187 @@ particlesJS("particles-js", {
     retina_detect: true
 });
 
+/* Audio Button */
+
 var volume = document.getElementById('volume');
 var audio = document.getElementById('audio');
 
-volume.addEventListener("click", () => {
-    if (audio.volume === 0){
-        audio.volume = 1;
-    } else if (audio.volume === 1){
-        audio.volume = 0.50;
-    } else if (audio.volume === 0.50){
-        audio.volume = 0.25;
-    } else{
-        audio.volume = 0;
-    };
-});
+if(volume == null){
+    volume = null;
+}else{
+    volume.addEventListener("click", () => {
+        if (audio.volume === 0){
+            audio.volume = 1;
+        } else{
+            audio.volume = 0;
+        }
+    })
+}
+
+/* Game Logics */
+
+const playArea = document.getElementById("game-box");
+if(playArea == null){
+
+}else{
+    const context = playArea.getContext("2d");
+
+    class SnakePart{
+        constructor(x, y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    
+    
+    let tileCount = 24;
+    let tileSize = playArea.width / tileCount - 3;
+    let headX = 10;
+    let headY = 10;
+    const snakeParts = [];
+    let tailLength = 2;
+    
+    let xVelocity = 0;
+    let yVelocity = 0;
+    
+    let appleX = 5;
+    let appleY = 5;
+    
+    let score = 0;
+    
+    
+    
+    function drawGame(){
+        positionSnake();
+        let status = isGameOver();
+        if(status){
+            return;
+        }
+        drawCanvas();
+        eatApple();
+        drawApple();
+        drawSnake();
+        drawScore();
+        setTimeout(drawGame, 1000/8);
+    }
+    
+    function isGameOver(){
+        let gameOver = false;
+    
+        if(yVelocity === 0 && xVelocity === 0){
+            return false;
+        }
+    
+        if(headX < 0){
+            gameOver = true;
+        }else if(headX === tileCount){
+            gameOver = true;
+        }else if(headY < 0){
+            gameOver = true;
+        }else if(headY === tileCount){
+            gameOver = true;
+        }
+    
+        for(let i=0; i < snakeParts.length; i++){
+            let part = snakeParts[i];
+            if(part.x == headX && part.y === headY){
+                gameOver = true;
+                break;
+            }
+        }
+    
+        if(gameOver){
+            context.fillStyle = "white";
+            context.font = "50px Verdana";
+            context.fillText("Game Over!", playArea.width / 4, playArea.height / 2);
+            context.fillStyle = "white";
+            context.font = "50px Verdana";
+            context.fillText("Press R play again!", playArea.width / 10, playArea.height / 1.5);
+        }
+        return gameOver;
+    }
+    
+    function drawScore(){
+        context.fillStyle = "white";
+        context.font = "15px Verdana";
+        context.fillText("Score: " + score, playArea.width - 80, 15)
+    }
+    
+    function drawCanvas(){
+        context.fillStyle = "black";
+        context.fillRect(0, 0, playArea.width, playArea.height);
+    }
+    
+    function drawSnake(){
+        context.fillStyle = "green";
+        for(let i=0; i < snakeParts.length; i++){
+            let part = snakeParts[i];
+            context.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
+        }
+    
+        snakeParts.push(new SnakePart(headX, headY));
+        while (snakeParts.length > tailLength){
+            snakeParts.shift();
+        }
+    
+        context.fillStyle = "green";
+        context.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
+    }
+    
+    function positionSnake(){
+        headX = headX + xVelocity;
+        headY = headY + yVelocity;
+    }
+    
+    function drawApple(){
+        context.fillStyle = "red";
+        context.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
+    }
+    
+    function eatApple(){
+        if(appleX === headX && appleY === headY){
+            appleX = Math.floor(Math.random() * tileCount)
+            appleY = Math.floor(Math.random() * tileCount)
+            tailLength++;
+            score++;
+            new Audio("assets/audio/eating-sound.mp3").play();
+        }
+    }
+    
+    document.body.addEventListener("keydown", keyDown);
+    
+    function keyDown(event){
+        if(event.keyCode == 38){
+            if(yVelocity == 1)
+                return;
+                yVelocity = -1;
+                xVelocity = 0;
+        }else if(event.keyCode == 40){
+            if(yVelocity == -1)
+                return;
+                yVelocity = 1;
+                xVelocity = 0;
+        }else if(event.keyCode == 37){
+            if(xVelocity == 1)
+                return;
+                yVelocity = 0;
+                xVelocity = -1;
+        }else if(event.keyCode == 39){
+            if(xVelocity == -1)
+                return;
+                yVelocity = 0;
+                xVelocity = 1;
+        }
+    
+    }
+    
+    drawGame();
+
+    document.body.addEventListener("keydown", restart);
+
+    function restart(key){
+        if(key.keyCode == 82){
+            window.location.reload();
+        }
+    }
+}

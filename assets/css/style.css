@@ -84,8 +84,8 @@ header h1{
 }
 
 #play-header{
-    margin-top: 1vh;
-    margin-bottom: 10vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
 #game-div{
@@ -94,10 +94,7 @@ header h1{
 }
 
 #game-box{
-    width: 400px;
-    height: 400px;
-    box-shadow: #333 20px 10px 50px;
-    background-color: white;
+    box-shadow: black 20px 10px 50px;
 }
 
 /* Responsive Design */
@@ -106,7 +103,7 @@ header h1{
     header h1{
         font-size: 5rem;
     }
-} 
+}
 
 @media screen and (max-height: 500px){
     header{
